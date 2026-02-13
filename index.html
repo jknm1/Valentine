@@ -42,10 +42,8 @@
       box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
       transition: all 0.3s ease;
     }
-    button:hover, button:active {
-      background: #c2185b;
-      transform: scale(1.06);
-      box-shadow: 0 18px 40px rgba(233, 30, 99, 0.5);
+    button:active {
+      transform: scale(0.95);
     }
     #player {
       display: none;
@@ -70,10 +68,8 @@
 
   <video id="player" controls autoplay playsinline loop>
     <source src="jellycat-valentine.mp4" type="video/mp4">
-    <!-- After you rename/re-upload the video as jellycat-valentine.mp4 (no space), this should work -->
-    <!-- Temporary test with full raw URL if rename not done yet: -->
-    <!-- <source src="https://raw.githubusercontent.com/jknm1/Valentine/main/jellycat-valentine.mp4%202.mp4" type="video/mp4"> -->
-    <p class="fallback">Sorry, your browser doesn't support video... but you're missing something cute! 😘<br>Try tapping the area or refreshing.</p>
+    <!-- If name is still capitalized or different, change to exact match e.g. src="Jellycat-valentine.mp4.mp4" -->
+    <p class="fallback">Video loading... if it doesn't play, tap the screen or refresh ❤️</p>
   </video>
 
   <script>
@@ -83,14 +79,12 @@
       
       const video = document.getElementById('player');
       video.style.display = 'block';
-      video.muted = false;  // Enable sound after user interaction
-      
-      video.play().then(() => {
-        console.log("Video is playing!");
-      }).catch(error => {
-        console.log("Play failed:", error);
-        // On mobile, sometimes needs manual tap on video controls
-        video.controls = true;  // Ensure controls show
+      video.muted = false;
+      video.load();  // Reload source
+      video.play().catch(e => {
+        console.log("Play error:", e);
+        // Mobile often needs manual tap
+        alert("Tap the video to start playing – love you! ❤️");
       });
     });
   </script>
