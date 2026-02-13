@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Queen Vyonne – 525 Days of Magic 📜💍🥂❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Parisienne&display=swap" rel="stylesheet">
-    <!-- Confetti library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
         body {
@@ -51,24 +50,22 @@
         p, li { font-size: 1.4em; line-height: 1.7; max-width: 800px; margin: 20px auto; }
         .royal-couple { max-width: 400px; margin: 30px auto; border: 8px solid #D4AF37; border-radius: 12px; box-shadow: 0 8px 20px rgba(139,69,19,0.4); }
         .message { background: rgba(245, 245, 220, 0.7); border: 4px dashed #DAA520; border-radius: 20px; padding: 25px; margin: 25px auto; max-width: 700px; font-style: italic; font-family: 'Parisienne', cursive; font-size: 1.5em; }
-        #poem { 
+        #letter { 
             font-family: 'Great Vibes', cursive; 
-            font-size: 2.4em; 
+            font-size: 2.0em; 
             margin: 40px auto; 
             max-width: 800px; 
             white-space: pre-wrap; 
-            line-height: 1.5; 
-            min-height: 250px; 
-            text-align: center; 
+            line-height: 1.6; 
+            min-height: 400px; 
+            text-align: left; 
             color: #4B2E2A;
         }
-        #poem::after { 
+        #letter.typing::after { 
             content: '|'; 
-            animation: blink 1s step-end infinite; 
+            animation: blink 0.8s step-end infinite; 
         }
-        @keyframes blink { 
-            50% { opacity: 0; } 
-        }
+        @keyframes blink { 50% { opacity: 0; } }
         button { background: linear-gradient(#D4AF37, #B8860B); color: #2F1F0F; border: none; padding: 18px 40px; font-size: 1.5em; font-weight: bold; border-radius: 50px; cursor: pointer; margin: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.4); transition: all 0.3s; }
         button:hover { transform: scale(1.1); background: linear-gradient(#FFD700, #DAA520); }
         #noBtn { position: relative; }
@@ -76,7 +73,8 @@
         #song-player, #owe-message, #champagne-celebration { display: none; margin: 40px auto; max-width: 800px; }
         #champagne-celebration img { max-width: 400px; border: 6px solid #D4AF37; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         #owe-message { background: rgba(210, 180, 140, 0.85); border: 5px solid #8B4513; border-radius: 25px; padding: 35px; font-size: 2em; font-weight: bold; color: #3C2F2F; }
-        /* Raining Rings 💍 */
+        #muteBtn { background: #B8860B; color: white; font-size: 1em; padding: 10px 20px; margin: 10px; display: none; }
+        /* Raining Rings 💍 and Hearts ❤️ – same as before */
         .ring { position: absolute; width: 50px; height: 50px; border: 6px solid #D4AF37; border-radius: 50%; box-shadow: 0 0 12px #FFD700; opacity: 0.9; pointer-events: none; animation: fall 12s linear infinite; z-index: 5; }
         @keyframes fall { 0% { transform: translateY(-100px) rotate(0deg); opacity: 1; } 100% { transform: translateY(120vh) rotate(1080deg); opacity: 0; } }
         .ring:nth-child(1) { left: 10%; animation-duration: 14s; animation-delay: 0s; }
@@ -84,14 +82,12 @@
         .ring:nth-child(3) { left: 50%; animation-duration: 11s; animation-delay: 4s; }
         .ring:nth-child(4) { left: 70%; animation-duration: 13s; animation-delay: 1s; }
         .ring:nth-child(5) { left: 85%; animation-duration: 15s; animation-delay: 3s; }
-        /* Falling Hearts ❤️ */
         .heart { position: absolute; font-size: 30px; opacity: 0.9; pointer-events: none; animation: fall-heart 10s linear infinite; z-index: 5; }
         @keyframes fall-heart { 0% { transform: translateY(-100px) translateX(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(120vh) translateX(50px) rotate(360deg); opacity: 0; } }
         .heart:nth-child(1) { left: 15%; animation-duration: 12s; animation-delay: 1s; color: #FF69B4; }
         .heart:nth-child(2) { left: 35%; animation-duration: 14s; animation-delay: 3s; color: #FF1493; }
         .heart:nth-child(3) { left: 55%; animation-duration: 11s; animation-delay: 0s; color: #C71585; }
         .heart:nth-child(4) { left: 75%; animation-duration: 13s; animation-delay: 2s; color: #DB7093; }
-        /* Dancing Cupid */
         #cupid { position: fixed; bottom: 30px; right: 30px; width: 180px; opacity: 0; transition: opacity 1.5s; z-index: 10; }
         #cupid.visible { opacity: 0.95; }
         footer { margin-top: 80px; font-size: 1.5em; color: #8B4513; font-family: 'Parisienne', cursive; }
@@ -99,23 +95,19 @@
 </head>
 <body>
 
-    <!-- Raining Rings & Hearts -->
     <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
     <div class="heart">❤️</div><div class="heart">💖</div><div class="heart">💕</div><div class="heart">💗</div>
 
-    <!-- Intro Scroll -->
     <img id="intro-scroll" src="https://thumbs.dreamstime.com/b/close-up-old-parchment-scroll-tied-twine-sealed-red-wax-seal-against-dark-textured-surface-image-387949968.jpg" alt="Tap the Wax Seal to Unroll Our Love 📜❤️">
 
-    <!-- Unrolling GIF -->
     <img id="unroll-gif" src="https://i.pinimg.com/originals/31/91/df/3191df9bf372e0dfefa55fcba779f98e.gif" style="display:none; max-width:600px; margin:20px auto;" alt="Unrolling...">
 
-    <!-- Main Content -->
     <div id="content">
 
         <img class="royal-couple" src="https://thumbs.dreamstime.com/b/silhouette-royal-couple-king-queen-monarchy-symbol-fairytale-stock-photo-generative-ai-crowns-symbolizing-romance-369325184.jpg" alt="King & Queen – Joseph & Vyonne">
 
         <h1>My Eternal Queen Vyonne</h1>
-        <p>February 14, 2026 – Nakuru<br>It's been <strong>525 days</strong> since we met... and every single one has been a gift. This scroll is yours, my love.</p>
+        <p>February 14, 2026 – Nakuru<br>It's been <strong>525 days</strong> since we met... and every single one has been a gift. Tap to unroll this love letter written from my heart to yours.</p>
 
         <h2>Will You Be My Forever Queen?</h2>
         <button id="yesBtn">YES! 👑❤️</button>
@@ -138,12 +130,14 @@
         <h2>Claim What I Owe My Queen</h2>
         <button onclick="showOwe()">Click to Spend 💸👑</button>
         <div id="owe-message">
-            I OWE YOU 15,525 KSH! <br><br>
+            I OWE YOU 10,000 KSH! <br><br>
             For lighting up these 525 days and counting. Redeem anytime. ❤️💰
         </div>
 
-        <h2>A Poem Typed Just for You</h2>
-        <p id="poem"></p>
+        <h2>A Love Letter Typed Just for You</h2>
+        <p id="letter"></p>
+
+        <button id="muteBtn">Mute Sounds & Voice</button>
 
         <footer>
             With all my love for 525 days and eternity ahead,<br>
@@ -154,7 +148,6 @@
 
     </div>
 
-    <!-- Dancing Cupid -->
     <img id="cupid" src="https://www.ohmygoodness.com/reserved/cards/og/202202051215420.dancing-cupid.gif.png" alt="Dancing Cupid 💘">
 
     <script>
@@ -162,9 +155,17 @@
         const unrollGif = document.getElementById('unroll-gif');
         const content = document.getElementById('content');
         const cupid = document.getElementById('cupid');
-        const poemEl = document.getElementById('poem');
+        const letterEl = document.getElementById('letter');
+        const muteBtn = document.getElementById('muteBtn');
+        let isMuted = false;
+        let typingSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-typewriter-soft-click-112.mp3');
+        typingSound.volume = 0.4;
 
-        // Unroll trigger
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            muteBtn.textContent = isMuted ? 'Unmute Sounds & Voice' : 'Mute Sounds & Voice';
+        });
+
         intro.addEventListener('click', () => {
             intro.style.display = 'none';
             unrollGif.style.display = 'block';
@@ -172,35 +173,73 @@
                 unrollGif.style.display = 'none';
                 content.classList.add('visible');
                 cupid.classList.add('visible');
-                setTimeout(typePoem, 500); // Slight delay for smooth reveal
+                setTimeout(typeLetter, 500);
             }, 3500);
         });
 
-        // Typewriter effect with blinking cursor
-        const poemText = "In this timeless scroll, my heart speaks clear,\nVyonne, my queen, you are forever near.\nRings fall like vows from the sky so blue,\nCupid dances, champagne flows for me and you.\n525 days of magic, and so many more,\nMy love for you opens every door.";
-        let charIndex = 0;
-        let isTyping = false;
+        // Large love letter (~800 words)
+        const letterText = `My Dearest Vyonne,
 
-        function typePoem() {
-            if (isTyping) return;
-            isTyping = true;
-            poemEl.innerHTML = ''; // Clear if restarted
+As this scroll unrolls on Valentine's Day, February 14, 2026, here in Nakuru where our story began, I sit with my heart wide open, trying to capture even a fraction of what you mean to me. It's been exactly 525 days since our paths crossed, and every single one of those days has been brighter, warmer, and more meaningful because of you.
+
+From the very first moment I saw you, something shifted inside me. Your smile lit up the room like the morning sun over Lake Nakuru, and your laugh—oh, that laugh—has become the soundtrack of my happiest memories. You walked into my life not just as a person, but as a force of grace, strength, and endless kindness. You are my queen, Vyonne, not in some fairy-tale sense, but in the real, everyday way that matters most. You rule my heart with quiet power, gentle wisdom, and a love so deep it makes me want to be better every single day.
+
+These 525 days have been a beautiful journey. We've shared rainy afternoons laughing under umbrellas, quiet evenings talking about dreams, long walks where words weren't needed because just being together was enough. You've seen me at my best and my worst, and you've loved me through it all without hesitation. Your support has carried me when I doubted myself, your encouragement has pushed me toward goals I once thought impossible, and your presence has turned ordinary moments into treasures I'll carry forever.
+
+You are beautiful in ways that go far beyond what the eye can see. Your compassion for others, the way you listen with your whole heart, the fire in your eyes when you talk about what you love—these are the things that make me fall for you over and over. You make me feel seen, truly seen, in a world that often rushes past. With you, I feel safe to be vulnerable, to dream big, to laugh at my own silliness, and to love without holding back.
+
+I think about our future often, Vyonne. I picture more sunrises in Nakuru, more adventures together, building a life filled with the little things that mean everything: morning coffee shared in silence, late-night talks under the stars, celebrating milestones big and small. I want to stand by your side through every joy and challenge, to hold your hand when the world feels heavy, to cheer louder than anyone when you succeed. I want to be the one who makes you feel like the queen you are—cherished, adored, protected, and endlessly loved.
+
+You have changed me in the best ways. Before you, I thought love was just a feeling; now I know it's a choice, a daily commitment, a promise to show up even when it's hard. You have taught me patience, grace, forgiveness, and what it truly means to put someone else's happiness before my own. I am a better man because of you, and I am grateful every day for the gift of loving you.
+
+On this Valentine's Day, I want you to know that my love for you is not seasonal or fleeting. It is steady, growing, unbreakable. It is in the way I think of you first thing in the morning and last at night, in the way my heart races when I hear your name, in the way I can't imagine a tomorrow without you in it.
+
+Vyonne, you are my home, my adventure, my peace, my passion. Thank you for choosing me, for trusting me with your heart, for making these 525 days the most beautiful chapter of my life so far. I promise to keep choosing you, to keep loving you fiercely, gently, completely—for as long as there are days to count and beyond.
+
+Happy Valentine's Day, my queen. Here's to us, to forever, to every moment yet to come.
+
+With all the love in my heart and more,
+Your devoted King,
+Joseph
+💍👑❤️`;
+
+        let charIndex = 0;
+        let utterance = null;
+
+        function typeLetter() {
+            letterEl.classList.add('typing');
+            muteBtn.style.display = 'block';
+
+            if ('speechSynthesis' in window && !isMuted) {
+                utterance = new SpeechSynthesisUtterance(letterText);
+                utterance.rate = 0.85;
+                utterance.pitch = 0.9;
+                utterance.volume = 0.8;
+                const voices = speechSynthesis.getVoices();
+                const maleVoice = voices.find(v => v.name.includes('Male') || v.name.includes('Google UK English Male') || v.name.includes('Daniel'));
+                if (maleVoice) utterance.voice = maleVoice;
+                speechSynthesis.speak(utterance);
+            }
 
             function typeNext() {
-                if (charIndex < poemText.length) {
-                    poemEl.innerHTML = poemText.substring(0, charIndex + 1);
+                if (charIndex < letterText.length) {
+                    const char = letterText.charAt(charIndex);
+                    letterEl.innerHTML += char;
+                    if (char.trim() !== '' && !isMuted) {
+                        typingSound.currentTime = 0;
+                        typingSound.play().catch(() => {});
+                    }
                     charIndex++;
-                    setTimeout(typeNext, 60); // Speed: lower = faster
+                    setTimeout(typeNext, 80); // Slower for long letter readability
                 } else {
-                    // Remove cursor when done
-                    poemEl.style.setProperty('--cursor', 'none');
-                    isTyping = false;
+                    letterEl.classList.remove('typing');
+                    if (utterance) speechSynthesis.cancel();
                 }
             }
             typeNext();
         }
 
-        // Dodging No button
+        // Dodging No, playSong, showOwe, etc. – keep as in previous version
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const yesResponse = document.getElementById('yesResponse');
@@ -236,6 +275,8 @@
         function showOwe() {
             document.getElementById('owe-message').style.display = 'block';
         }
+
+        speechSynthesis.onvoiceschanged = () => {};
     </script>
 
 </body>
