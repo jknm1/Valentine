@@ -1,93 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For You ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: #880e4f;
-      text-align: center;
-      overflow: hidden;
-    }
-    h1 {
-      font-size: 2.8em;
-      margin: 0 20px 40px;
-      animation: heartbeat 1.8s infinite;
-      line-height: 1.2;
-    }
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      14% { transform: scale(1.12); }
-      28% { transform: scale(1); }
-      42% { transform: scale(1.12); }
-      70% { transform: scale(1); }
-    }
-    button {
-      font-size: 2.5em;
-      padding: 20px 70px;
-      background: #e91e63;
-      color: white;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
-      transition: all 0.3s ease;
-    }
-    button:active {
-      transform: scale(0.95);
-    }
-    #player {
-      display: none;
-      max-width: 95%;
-      max-height: 65vh;
-      border-radius: 18px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      margin-top: 30px;
-    }
-    .fallback {
-      font-size: 1.2em;
-      margin-top: 20px;
-      color: #555;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, My Queen!</title>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/free-vector/valentines-day-floating-hearts-red-background-with-text-space_1017-42494.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: gold;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #FFD700; /* Gold */
+            font-size: 2em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .message {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black for readability */
+            border: 2px solid gold;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 600px;
+            font-style: italic;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            margin: 20px 0;
+            border: 5px solid gold;
+            border-radius: 10px;
+        }
+        .poem {
+            font-size: 1.5em;
+            margin: 20px 0;
+            white-space: pre-wrap;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 1em;
+            color: #FFD700;
+        }
+    </style>
 </head>
 <body>
-
-  <h1>Hey love... will you accept this little surprise? 🐰</h1>
-  
-  <button id="yes">Yes! ❤️</button>
-
-  <video id="player" controls autoplay playsinline loop>
-    <source src="jellycat-valentine.mp4" type="video/mp4">
-    <!-- If name is still capitalized or different, change to exact match e.g. src="Jellycat-valentine.mp4.mp4" -->
-    <p class="fallback">Video loading... if it doesn't play, tap the screen or refresh ❤️</p>
-  </video>
-
-  <script>
-    document.getElementById('yes').addEventListener('click', function() {
-      document.querySelector('h1').innerHTML = "For you. With love ❤️ 🐰";
-      this.style.display = 'none';
-      
-      const video = document.getElementById('player');
-      video.style.display = 'block';
-      video.muted = false;
-      video.load();  // Reload source
-      video.play().catch(e => {
-        console.log("Play error:", e);
-        // Mobile often needs manual tap
-        alert("Tap the video to start playing – love you! ❤️");
-      });
-    });
-  </script>
-
+    <img src="https://media.istockphoto.com/id/497180522/vector/gold-diadem-with-diamonds.jpg?s=612x612&w=0&k=20&c=LJlIVJglcshvPqYCFKv-hcSzSeA7wRHlpxg_ZfP-xEA=" alt="Golden Queen Crown">
+    <h1>Happy Valentine's Day, [Her Name]!</h1>
+    <p>You are my queen, the ruler of my heart. Today and every day, I want you to feel cherished, adored, and like the most special woman in the world. From the moment I wake up in Nakuru to the stars above Kenya, my thoughts are with you.</p>
+    
+    <img src="https://floom-nextjs.imgix.net/products/582acd40-8958-4272-9bdd-873e1739c486.jpeg?w=1200&h=630&crop=entrophy&fit=crop&q=75" alt="Bouquet of Red Roses">
+    
+    <h2>A Poem for My Queen</h2>
+    <p class="poem">
+In a kingdom of dreams, where love reigns supreme,
+You sit on the throne, my eternal queen.
+Your smile lights the halls, your touch sets me free,
+Forever your king, that's who I'll be.
+Roses may fade, but my love stays true,
+Happy Valentine's, my heart beats for you.
+    </p>
+    
+    <h2>Sweet Messages to Make You Feel Like Royalty</h2>
+    <div class="message">You are the queen of my heart! Every day with you feels like a royal adventure filled with joy and wonder.</div>
+    <div class="message">Your beauty, intelligence, and kindness make me fall in love with you more and more every day. You truly are majestic.</div>
+    <div class="message">You make me feel like the luckiest king in the world to have such a graceful and loving queen by my side.</div>
+    <div class="message">To my beautiful queen, happy Valentine's Day. You rule my world with your endless love and compassion.</div>
+    <div class="message">Every moment with you is a treasure. You've made my life richer in ways I never imagined, like a palace of endless happiness.</div>
+    <div class="message">You are such an amazing woman—caring, loving, and passionate. You deserve to be treated like royalty every single day.</div>
+    <div class="message">I can only hope that I make you as half as happy as you make me. You are my everything, my sovereign love.</div>
+    <div class="message">You are my love, my best friend, my one and only queen. Life without you would be an empty throne.</div>
+    <div class="message">You’re the queen of my heart, and I’m so grateful to be your king. Together, we conquer the world with love.</div>
+    <div class="message">You are the most incredible woman I have ever known. Your strength, grace, and compassion inspire me every day—like a true empress.</div>
+    <div class="message">When I am with you, I feel like I own the whole world. You make ordinary days feel like grand coronations.</div>
+    <div class="message">You light up my world—Happy Valentine’s Day, my love! Your radiance outshines any crown jewel.</div>
+    <div class="message">Loving you is the best thing I’ve ever done. You deserve a kingdom of happiness, and I'll build it for you.</div>
+    <div class="message">You make my heart skip a beat every day, my queen. Your presence turns my life into a fairy tale.</div>
+    
+    <img src="https://cdn.pensador.com/en/images/all-my-love-is-yours-forever-to-last.jpg" alt="Romantic Love Letter">
+    
+    <h2>Why You Are My Queen</h2>
+    <p>Here are just a few reasons (replace these with your personal details for even more impact):</p>
+    <ul style="list-style-type: none; max-width: 600px; margin: 0 auto; text-align: left; background-color: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 10px;">
+        <li>👑 Your smile brightens even the cloudiest days in Nakuru.</li>
+        <li>👑 Your kindness makes everyone around you feel valued and loved.</li>
+        <li>👑 Your strength inspires me to be a better man every day.</li>
+        <li>👑 Our shared memories, like [add a specific memory, e.g., our walks by the lake], are my greatest treasures.</li>
+        <li>👑 You support my dreams and make me believe in fairy-tale endings.</li>
+        <li>👑 Your laughter is the sweetest music in my kingdom.</li>
+        <li>👑 You make me feel complete, like a perfect royal match.</li>
+    </ul>
+    
+    <footer>
+        <p>With all my love, forever your devoted king,</p>
+        <p>Joseph</p>
+        <p>(February 14, 2026 – Our love story continues...)</p>
+    </footer>
 </body>
 </html>
