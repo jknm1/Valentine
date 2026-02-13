@@ -51,7 +51,24 @@
         p, li { font-size: 1.4em; line-height: 1.7; max-width: 800px; margin: 20px auto; }
         .royal-couple { max-width: 400px; margin: 30px auto; border: 8px solid #D4AF37; border-radius: 12px; box-shadow: 0 8px 20px rgba(139,69,19,0.4); }
         .message { background: rgba(245, 245, 220, 0.7); border: 4px dashed #DAA520; border-radius: 20px; padding: 25px; margin: 25px auto; max-width: 700px; font-style: italic; font-family: 'Parisienne', cursive; font-size: 1.5em; }
-        #poem { font-family: 'Great Vibes', cursive; font-size: 2.2em; margin: 40px auto; max-width: 800px; white-space: pre-wrap; line-height: 1.6; min-height: 200px; }
+        #poem { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 2.4em; 
+            margin: 40px auto; 
+            max-width: 800px; 
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            min-height: 250px; 
+            text-align: center; 
+            color: #4B2E2A;
+        }
+        #poem::after { 
+            content: '|'; 
+            animation: blink 1s step-end infinite; 
+        }
+        @keyframes blink { 
+            50% { opacity: 0; } 
+        }
         button { background: linear-gradient(#D4AF37, #B8860B); color: #2F1F0F; border: none; padding: 18px 40px; font-size: 1.5em; font-weight: bold; border-radius: 50px; cursor: pointer; margin: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.4); transition: all 0.3s; }
         button:hover { transform: scale(1.1); background: linear-gradient(#FFD700, #DAA520); }
         #noBtn { position: relative; }
@@ -67,7 +84,7 @@
         .ring:nth-child(3) { left: 50%; animation-duration: 11s; animation-delay: 4s; }
         .ring:nth-child(4) { left: 70%; animation-duration: 13s; animation-delay: 1s; }
         .ring:nth-child(5) { left: 85%; animation-duration: 15s; animation-delay: 3s; }
-        /* Falling Hearts ❤️ (starts after unroll) */
+        /* Falling Hearts ❤️ */
         .heart { position: absolute; font-size: 30px; opacity: 0.9; pointer-events: none; animation: fall-heart 10s linear infinite; z-index: 5; }
         @keyframes fall-heart { 0% { transform: translateY(-100px) translateX(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(120vh) translateX(50px) rotate(360deg); opacity: 0; } }
         .heart:nth-child(1) { left: 15%; animation-duration: 12s; animation-delay: 1s; color: #FF69B4; }
@@ -82,11 +99,11 @@
 </head>
 <body>
 
-    <!-- Raining Rings & Hearts (hearts hidden until reveal) -->
+    <!-- Raining Rings & Hearts -->
     <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
     <div class="heart">❤️</div><div class="heart">💖</div><div class="heart">💕</div><div class="heart">💗</div>
 
-    <!-- Intro: Closed Scroll with Seal -->
+    <!-- Intro Scroll -->
     <img id="intro-scroll" src="https://thumbs.dreamstime.com/b/close-up-old-parchment-scroll-tied-twine-sealed-red-wax-seal-against-dark-textured-surface-image-387949968.jpg" alt="Tap the Wax Seal to Unroll Our Love 📜❤️">
 
     <!-- Unrolling GIF -->
@@ -121,7 +138,7 @@
         <h2>Claim What I Owe My Queen</h2>
         <button onclick="showOwe()">Click to Spend 💸👑</button>
         <div id="owe-message">
-            I OWE YOU 15,788 KSH! <br><br>
+            I OWE YOU 15,525 KSH! <br><br>
             For lighting up these 525 days and counting. Redeem anytime. ❤️💰
         </div>
 
@@ -141,13 +158,13 @@
     <img id="cupid" src="https://www.ohmygoodness.com/reserved/cards/og/202202051215420.dancing-cupid.gif.png" alt="Dancing Cupid 💘">
 
     <script>
-        // Unroll on click
         const intro = document.getElementById('intro-scroll');
         const unrollGif = document.getElementById('unroll-gif');
         const content = document.getElementById('content');
         const cupid = document.getElementById('cupid');
         const poemEl = document.getElementById('poem');
 
+        // Unroll trigger
         intro.addEventListener('click', () => {
             intro.style.display = 'none';
             unrollGif.style.display = 'block';
@@ -155,19 +172,32 @@
                 unrollGif.style.display = 'none';
                 content.classList.add('visible');
                 cupid.classList.add('visible');
-                typePoem(); // Start typewriter
+                setTimeout(typePoem, 500); // Slight delay for smooth reveal
             }, 3500);
         });
 
-        // Typewriter for poem
+        // Typewriter effect with blinking cursor
         const poemText = "In this timeless scroll, my heart speaks clear,\nVyonne, my queen, you are forever near.\nRings fall like vows from the sky so blue,\nCupid dances, champagne flows for me and you.\n525 days of magic, and so many more,\nMy love for you opens every door.";
-        let i = 0;
+        let charIndex = 0;
+        let isTyping = false;
+
         function typePoem() {
-            if (i < poemText.length) {
-                poemEl.innerHTML += poemText.charAt(i);
-                i++;
-                setTimeout(typePoem, 60);
+            if (isTyping) return;
+            isTyping = true;
+            poemEl.innerHTML = ''; // Clear if restarted
+
+            function typeNext() {
+                if (charIndex < poemText.length) {
+                    poemEl.innerHTML = poemText.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeNext, 60); // Speed: lower = faster
+                } else {
+                    // Remove cursor when done
+                    poemEl.style.setProperty('--cursor', 'none');
+                    isTyping = false;
+                }
             }
+            typeNext();
         }
 
         // Dodging No button
@@ -179,8 +209,8 @@
             const x = Math.random() * (window.innerWidth - 200);
             const y = Math.random() * (window.innerHeight - 200);
             noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
         });
         noBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -195,7 +225,6 @@
         function playSong() {
             document.getElementById('song-player').style.display = 'block';
             document.getElementById('champagne-celebration').style.display = 'block';
-            // Confetti burst for celebration
             confetti({
                 particleCount: 200,
                 spread: 100,
