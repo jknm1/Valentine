@@ -3,191 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day, My Queen Vyonne!</title>
+    <title>To My Queen Vyonne – A Royal Love Scroll 💍📜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Parisienne&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url('https://img.freepik.com/free-vector/valentines-day-floating-hearts-red-background-with-text-space_1017-42494.jpg');
+            background-image: url('https://thumbs.dreamstime.com/b/ancient-love-letter-background-888943.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: white;
-            font-family: 'Georgia', serif;
+            color: #3C2F2F; /* Dark vintage brown for text */
+            font-family: 'Cinzel', serif;
             text-align: center;
-            padding: 30px 15px;
+            padding: 40px 20px;
             margin: 0;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .scroll-container {
+            background: rgba(255, 248, 240, 0.92); /* Semi-transparent parchment overlay */
+            border: 20px solid transparent;
+            border-image: url('https://thumbs.dreamstime.com/b/antique-scroll-gold-ornate-frame-perfect-elegant-designs-vintage-themed-projects-use-as-background-invitation-365904746.jpg') 30 stretch;
+            border-image-slice: 30;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 60px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            position: relative;
         }
         h1 {
-            color: #FFD700;
-            font-size: 3.5em;
-            margin: 20px 0;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            font-family: 'Great Vibes', cursive;
+            color: #8B4513; /* Rich gold-brown */
+            font-size: 4.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         h2 {
-            color: #FF69B4;
-            font-size: 2.4em;
+            font-family: 'Parisienne', cursive;
+            color: #B8860B;
+            font-size: 2.8em;
             margin: 40px 0 20px;
         }
         p, li {
-            font-size: 1.3em;
-            line-height: 1.6;
+            font-size: 1.4em;
+            line-height: 1.7;
             max-width: 800px;
-            margin: 15px auto;
+            margin: 20px auto;
+        }
+        .royal-couple {
+            max-width: 400px;
+            margin: 20px auto 40px;
+            border: 8px solid #D4AF37;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(139,69,19,0.4);
         }
         .message {
-            background: rgba(0, 0, 0, 0.65);
-            border: 3px solid #FFD700;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px auto;
+            background: rgba(245, 245, 220, 0.7);
+            border: 4px dashed #DAA520;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px auto;
             max-width: 700px;
             font-style: italic;
-            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
-        }
-        img {
-            max-width: 320px;
-            height: auto;
-            margin: 30px auto;
-            border: 6px solid #FFD700;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            display: block;
+            font-family: 'Parisienne', cursive;
+            font-size: 1.5em;
         }
         .poem {
-            font-size: 1.6em;
-            font-style: italic;
-            margin: 30px auto;
-            max-width: 700px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2em;
+            margin: 40px auto;
+            max-width: 800px;
             white-space: pre-wrap;
-            line-height: 1.8;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            max-width: 700px;
-            margin: 20px auto;
-            text-align: left;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 12px;
-            padding: 25px;
-        }
-        li {
-            margin: 12px 0;
-            font-size: 1.25em;
+            line-height: 1.6;
         }
         button {
-            background: #FFD700;
-            color: #8B0000;
+            background: linear-gradient(#D4AF37, #B8860B);
+            color: #2F1F0F;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.4em;
+            padding: 18px 40px;
+            font-size: 1.5em;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            margin: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
             transition: all 0.3s;
         }
-        button:hover {
-            transform: scale(1.08);
-            background: #FF69B4;
-            color: white;
-        }
-        #song-player {
-            display: none;
-            margin: 30px auto;
-            max-width: 700px;
-        }
+        button:hover { transform: scale(1.1); background: linear-gradient(#FFD700, #DAA520); }
+        #song-player, #owe-message { display: none; margin: 40px auto; max-width: 800px; }
         #owe-message {
-            display: none;
-            background: rgba(139, 0, 0, 0.7);
-            border: 4px solid #FFD700;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 600px;
-            font-size: 1.8em;
+            background: rgba(210, 180, 140, 0.85);
+            border: 5px solid #8B4513;
+            border-radius: 25px;
+            padding: 35px;
+            font-size: 2em;
             font-weight: bold;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px black;
+            color: #3C2F2F;
         }
+        /* Raining Rings (golden on parchment) */
+        .ring {
+            position: absolute;
+            width: 50px; height: 50px;
+            border: 6px solid #D4AF37;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #FFD700;
+            opacity: 0.9;
+            pointer-events: none;
+            animation: fall 12s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(120vh) rotate(1080deg); opacity: 0; }
+        }
+        .ring:nth-child(1) { left: 15%; animation-duration: 14s; animation-delay: 0s; }
+        .ring:nth-child(2) { left: 35%; animation-duration: 16s; animation-delay: 3s; }
+        .ring:nth-child(3) { left: 55%; animation-duration: 11s; animation-delay: 1s; }
+        .ring:nth-child(4) { left: 75%; animation-duration: 13s; animation-delay: 5s; }
+        /* Cupid */
+        #cupid {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 160px;
+            opacity: 0;
+            transition: opacity 1.5s;
+            z-index: 10;
+        }
+        #cupid.visible { opacity: 0.9; }
         footer {
-            margin-top: 60px;
-            font-size: 1.4em;
-            color: #FFD700;
-            text-shadow: 1px 1px 3px black;
+            margin-top: 80px;
+            font-size: 1.5em;
+            color: #8B4513;
+            font-family: 'Parisienne', cursive;
         }
     </style>
 </head>
 <body>
 
-    <img src="https://i.ytimg.com/vi/eaYqWNF1noM/maxresdefault.jpg" alt="Chikwere by Bien - Official Audio Cover">
+    <!-- Raining Rings -->
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
 
-    <h1>Happy Valentine's Day, My Beautiful Queen Vyonne!</h1>
+    <!-- Dancing Cupid -->
+    <img id="cupid" src="https://www.ohmygoodness.com/reserved/cards/og/202202051215420.dancing-cupid.gif.png" alt="Cupid Dancing 💘">
 
-    <p>My dearest Vyonne, on this special February 14, 2026, my heart is playing our song for you. You've ruled my world since day one—now listen, spend, and feel how much you're cherished.</p>
+    <div class="scroll-container">
 
-    <h2>Dedicated Song Just for You</h2>
-    <p>This one's from me to you, Vyonne—because I'm ready, and you're my forever "yes". Click below to hear it.</p>
-    <button onclick="playSong()">Listen to My Song Dedicated to You 🎶</button>
+        <img class="royal-couple" src="https://thumbs.dreamstime.com/b/silhouette-royal-couple-king-queen-monarchy-symbol-fairytale-stock-photo-generative-ai-crowns-symbolizing-romance-369325184.jpg" alt="King & Queen Silhouette – Us Forever">
 
-    <div id="song-player">
-        <iframe width="100%" height="380" src="https://www.youtube.com/embed/eaYqWNF1noM?enablejsapi=1" title="Bien - Chikwere (Official Audio)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p style="font-size: 1.1em; margin-top: 10px;">"Hey love, I think I'm ready now... Chikwere, will you say yes?" 💕 – Bien (This one's for us)</p>
+        <h1>My Dearest Queen Vyonne</h1>
+        <p>February 14, 2026 – Nakuru<br>A scroll unsealed only for you, my love. These words, written from my heart to yours, proclaim you as the eternal ruler of my kingdom.</p>
+
+        <h2>Dedicated Song from Your King</h2>
+        <button onclick="playSong()">Listen to Chikwere – My Promise to You 🎶</button>
+        <div id="song-player">
+            <iframe width="100%" height="380" src="https://www.youtube.com/embed/eaYqWNF1noM?enablejsapi=1" title="Bien - Chikwere" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <p>"Chikwere, will you say yes?" – This song is our forever, Vyonne.</p>
+        </div>
+
+        <h2>Claim What I Owe My Queen</h2>
+        <button onclick="showOwe()">Click to Spend 💸👑</button>
+        <div id="owe-message">
+            I OWE YOU 17,000 KSH! <br><br>
+            For every royal smile, every laugh that echoes in my heart, every moment you've graced my life. Redeem anytime, my queen – your wish is my command. ❤️💰
+        </div>
+
+        <img src="https://thumbs.dreamstime.com/b/captivating-red-rose-bouquet-romantic-valentines-day-floral-arrangement-special-occasion-indulge-exquisite-beauty-360672170.jpg" alt="Bouquet for My Queen">
+
+        <h2>A Poem Unrolled for You</h2>
+        <p class="poem">
+In this ancient scroll, my heart speaks true,  
+Vyonne, my queen, all belongs to you.  
+From Nakuru's streets to eternity's gate,  
+Your love is the crown I celebrate.  
+Rings fall like promises from above,  
+Forever bound in endless love.
+        </p>
+
+        <h2>Messages Sealed with My Devotion</h2>
+        <div class="message">Vyonne, you reign supreme in grace and fire – my majestic queen forever.</div>
+        <div class="message">Every day with you feels like a coronation of joy.</div>
+        <!-- Add more messages as before -->
+
+        <footer>
+            Sealed with all my love, your devoted King,<br>
+            Joseph<br>
+            💍📜❤️ – Our story continues eternally.
+        </footer>
+
     </div>
-
-    <h2>Spend Time with Your Queen</h2>
-    <p>Click to claim what I owe you for being the most amazing woman in my life...</p>
-    <button onclick="showOwe()">Click to Spend 💸👑</button>
-
-    <div id="owe-message">
-        I OWE YOU 20,000 KSH! <br><br>
-        For every smile you've given me, every laugh we've shared, every moment you've made brighter in Nakuru and beyond. <br>
-        Redeem anytime, my queen—no expiration date. This is just the start of spoiling you forever. ❤️💰
-    </div>
-
-    <!-- Rest of the previous content (poem, messages, why you're my queen, etc.) remains here for completeness -->
-    <img src="https://thumbs.dreamstime.com/b/captivating-red-rose-bouquet-romantic-valentines-day-floral-arrangement-special-occasion-indulge-exquisite-beauty-360672170.jpg" alt="Lush Bouquet of Red Roses">
-
-    <h2>A Love Poem for My One & Only Queen</h2>
-    <p class="poem">
-In the kingdom of my soul, where only you reign supreme,  
-Vyonne, my queen, you are every beautiful dream.  
-Your laughter echoes through these humble streets of Nakuru,  
-Your grace turns ordinary moments into something true.  
-With every beat, my heart bows before your throne,  
-Forever your devoted king, never alone.  
-Roses may wither, stars may fade from sight,  
-But my love for you burns eternal, pure and bright.  
-Happy Valentine's Day, my forever queen.
-    </p>
-
-    <h2>Sweet Messages from Your King to You</h2>
-    <div class="message">Vyonne, you are the most majestic woman I know—your beauty, your kindness, your fire… you rule my heart completely.</div>
-    <div class="message">Every day I thank the stars that you chose me. You make me feel like the luckiest king to have such an extraordinary queen.</div>
-    <!-- ... add the other messages as before if you want ... -->
-
-    <img src="https://thumbs.dreamstime.com/b/romantic-love-letter-envelope-red-rose-petals-rustic-wooden-background-vintage-design-handwritten-message-brown-kraft-wood-355933199.jpg" alt="Romantic Love Letter with Rose Petals">
-
-    <h2>Why You Will Always Be My Queen</h2>
-    <ul>
-        <li>👑 Your smile turns ordinary days into celebrations—I still melt every time I see it.</li>
-        <li>👑 Your kindness touches everyone around you; you make people feel seen and valued.</li>
-        <!-- ... keep or customize the list ... -->
-    </ul>
-
-    <footer>
-        <p>With every beat of my heart (and now this song playing in the background), forever yours,</p>
-        <p>Your devoted King,</p>
-        <p>Joseph</p>
-        <p>February 14, 2026 – Nakuru, Kenya</p>
-        <p>I love you more than yesterday, but less than tomorrow. 💛👑🎶</p>
-    </footer>
 
     <script>
+        setTimeout(() => {
+            document.getElementById('cupid').classList.add('visible');
+        }, 2500);
+
         function playSong() {
             document.getElementById('song-player').style.display = 'block';
-            // Optional: Auto-play starts via YouTube API if needed, but user gesture required for autoplay in most browsers
         }
 
         function showOwe() {
