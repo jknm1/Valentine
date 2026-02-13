@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #880e4f;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.8em;
+      margin: 0 20px 40px;
+      animation: heartbeat 1.8s infinite;
+      line-height: 1.2;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.12); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.12); }
+      70% { transform: scale(1); }
+    }
+    button {
+      font-size: 2.5em;
+      padding: 20px 70px;
+      background: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+      transition: all 0.3s ease;
+    }
+    button:hover, button:active {
+      background: #c2185b;
+      transform: scale(1.06);
+      box-shadow: 0 18px 40px rgba(233, 30, 99, 0.5);
+    }
+    #player {
+      display: none;
+      max-width: 95%;
+      max-height: 65vh;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey love... will you accept this little surprise? 🐰</h1>
+  
+  <button id="yes">Yes! ❤️</button>
+
+  <video id="player" controls autoplay playsinline loop>
+    <source src="jellycat-valentine.mp4" type="video/mp4">
+    <!-- If you uploaded the video inside a folder called videos/, change the line above to: -->
+    <!-- <source src="videos/jellycat-valentine.mp4" type="video/mp4"> -->
+    Sorry, your browser doesn't support video... but you're missing something cute! 😘
+  </video>
+
+  <script>
+    document.getElementById('yes').addEventListener('click', function() {
+      document.querySelector('h1').innerHTML = "For you. With love ❤️ 🐰";
+      this.style.display = 'none';
+      
+      const video = document.getElementById('player');
+      video.style.display = 'block';
+      video.muted = false;           // Turn sound on (safe after user tap)
+      
+      video.play().catch(function(error) {
+        console.log("Autoplay:", error);
+        // If sound doesn't start automatically, she can tap the video play button
+      });
+    });
+  </script>
+
+</body>
+</html>
