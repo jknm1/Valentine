@@ -55,6 +55,11 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.35);
       margin-top: 30px;
     }
+    .fallback {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -64,10 +69,11 @@
   <button id="yes">Yes! ❤️</button>
 
   <video id="player" controls autoplay playsinline loop>
-    <source src="https://www.instagram.com/reel/DUi-QRujKyb/?igsh=MXE4aGd1NWtrcGszYQ==" type="video/mp4">
-    <!-- If you uploaded the video inside a folder called videos/, change the line above to: -->
-    <!-- <source src="videos/jellycat-valentine.mp4" type="video/mp4"> -->
-    Sorry, your browser doesn't support video... but you're missing something cute! 😘
+    <source src="jellycat-valentine.mp4" type="video/mp4">
+    <!-- After you rename/re-upload the video as jellycat-valentine.mp4 (no space), this should work -->
+    <!-- Temporary test with full raw URL if rename not done yet: -->
+    <!-- <source src="https://raw.githubusercontent.com/jknm1/Valentine/main/jellycat-valentine.mp4%202.mp4" type="video/mp4"> -->
+    <p class="fallback">Sorry, your browser doesn't support video... but you're missing something cute! 😘<br>Try tapping the area or refreshing.</p>
   </video>
 
   <script>
@@ -77,11 +83,14 @@
       
       const video = document.getElementById('player');
       video.style.display = 'block';
-      video.muted = false;           // Turn sound on (safe after user tap)
+      video.muted = false;  // Enable sound after user interaction
       
-      video.play().catch(function(error) {
-        console.log("Autoplay:", error);
-        // If sound doesn't start automatically, she can tap the video play button
+      video.play().then(() => {
+        console.log("Video is playing!");
+      }).catch(error => {
+        console.log("Play failed:", error);
+        // On mobile, sometimes needs manual tap on video controls
+        video.controls = true;  // Ensure controls show
       });
     });
   </script>
