@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To My Queen Vyonne – A Royal Love Scroll 💍📜🥂</title>
+    <title>To My Queen Vyonne – Tap the Seal to Unroll Our Love 📜💍🥂</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Parisienne&display=swap" rel="stylesheet">
     <style>
         body {
@@ -20,18 +20,30 @@
             position: relative;
             overflow-x: hidden;
         }
-        .scroll-container {
+        #intro-scroll {
+            max-width: 600px;
+            margin: 100px auto 50px;
+            cursor: pointer;
+            border: 8px solid #8B4513;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transition: transform 0.3s;
+        }
+        #intro-scroll:hover { transform: scale(1.05); }
+        #content {
+            opacity: 0;
+            transition: opacity 2s ease-in;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
             background: rgba(255, 248, 240, 0.92);
             border: 20px solid transparent;
             border-image: url('https://thumbs.dreamstime.com/b/antique-scroll-gold-ornate-frame-perfect-elegant-designs-vintage-themed-projects-use-as-background-invitation-365904746.jpg') 30 stretch;
             border-image-slice: 30;
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 60px 40px;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            position: relative;
         }
+        #content.visible { opacity: 1; }
         h1 {
             font-family: 'Great Vibes', cursive;
             color: #8B4513;
@@ -53,7 +65,7 @@
         }
         .royal-couple {
             max-width: 400px;
-            margin: 20px auto 40px;
+            margin: 30px auto;
             border: 8px solid #D4AF37;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(139,69,19,0.4);
@@ -71,7 +83,7 @@
         }
         .poem {
             font-family: 'Great Vibes', cursive;
-            font-size: 2em;
+            font-size: 2.2em;
             margin: 40px auto;
             max-width: 800px;
             white-space: pre-wrap;
@@ -96,6 +108,12 @@
             margin: 40px auto;
             max-width: 800px;
         }
+        #champagne-celebration img {
+            max-width: 400px;
+            border: 6px solid #D4AF37;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
         #owe-message {
             background: rgba(210, 180, 140, 0.85);
             border: 5px solid #8B4513;
@@ -104,12 +122,6 @@
             font-size: 2em;
             font-weight: bold;
             color: #3C2F2F;
-        }
-        #champagne-celebration img {
-            max-width: 400px;
-            border: 6px solid #D4AF37;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         /* Raining Rings 💍 */
         .ring {
@@ -121,6 +133,7 @@
             opacity: 0.9;
             pointer-events: none;
             animation: fall 12s linear infinite;
+            z-index: 5;
         }
         @keyframes fall {
             0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
@@ -152,38 +165,42 @@
 </head>
 <body>
 
-    <!-- Raining Rings 💍 – more of them for extra magic -->
+    <!-- Raining Rings start immediately but are subtle until content reveals -->
     <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
 
-    <!-- Dancing Cupid – lively animated GIF -->
-    <img id="cupid" src="https://www.ohmygoodness.com/reserved/cards/og/202202051215420.dancing-cupid.gif.png" alt="Dancing Cupid Celebrating Our Love 💘">
+    <!-- Initial Closed Scroll with Wax Seal – Click to Unroll -->
+    <img id="intro-scroll" src="https://thumbs.dreamstime.com/b/close-up-old-parchment-scroll-tied-twine-sealed-red-wax-seal-against-dark-textured-surface-image-387949968.jpg" alt="Tap the Wax Seal to Unroll Our Love Letter 📜❤️">
 
-    <div class="scroll-container">
+    <!-- Unrolling Animation (shows briefly on click) -->
+    <img id="unroll-gif" src="https://i.pinimg.com/originals/31/91/df/3191df9bf372e0dfefa55fcba779f98e.gif" style="display:none; max-width:600px; margin:20px auto; border:none; box-shadow:none;" alt="Scroll Unrolling...">
 
-        <img class="royal-couple" src="https://thumbs.dreamstime.com/b/silhouette-royal-couple-king-queen-monarchy-symbol-fairytale-stock-photo-generative-ai-crowns-symbolizing-romance-369325184.jpg" alt="King & Queen Silhouette – You & Vyonne Forever">
+    <!-- Main Content – Hidden until unroll -->
+    <div id="content">
+
+        <img class="royal-couple" src="https://thumbs.dreamstime.com/b/silhouette-royal-couple-king-queen-monarchy-symbol-fairytale-stock-photo-generative-ai-crowns-symbolizing-romance-369325184.jpg" alt="King Joseph & Queen Vyonne – Forever">
 
         <h1>My Dearest Queen Vyonne</h1>
-        <p>February 14, 2026 – Nakuru<br>This ancient scroll is yours alone, my love. Rings rain from the heavens as promises, Cupid dances in joy, and champagne pops to toast our eternal bond.</p>
+        <p>February 14, 2026 – Nakuru<br>The seal is broken, the scroll unrolled... just for you, my love. Rings rain as promises, Cupid dances in celebration, and champagne flows for us.</p>
 
         <h2>Dedicated Song from Your King</h2>
         <button onclick="playSong()">Listen to Chikwere – My Promise to You 🎶</button>
         <div id="song-player">
             <iframe width="100%" height="380" src="https://www.youtube.com/embed/eaYqWNF1noM?enablejsapi=1" title="Bien - Chikwere" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <p>"Chikwere, will you say yes?" – This is our song, Vyonne.</p>
+            <p>"Chikwere, will you say yes?" – This is our forever song, Vyonne.</p>
         </div>
 
-        <!-- Champagne Celebration 🥂 – appears on song click -->
+        <!-- Champagne 🥂 appears on song play -->
         <div id="champagne-celebration">
-            <h2>Cheers to Us! 🥂</h2>
-            <img src="https://i.pinimg.com/originals/31/38/ea/3138eaae6e8ea4ae435b640c38054afd.gif" alt="Champagne Bottle Popping & Pouring into Two Glasses">
-            <p>The bottle pops, the glasses fill – just like my heart overflows with love for you every day. To many more celebrations together, my queen!</p>
+            <h2>Cheers to Our Love! 🥂</h2>
+            <img src="https://i.pinimg.com/originals/31/91/df/3191df9bf372e0dfefa55fcba779f98e.gif" alt="Champagne Bottle Popping & Pouring into Two Glasses">
+            <p>The cork pops, glasses overflow – just like my heart for you. To endless toasts together, my queen!</p>
         </div>
 
         <h2>Claim What I Owe My Queen</h2>
         <button onclick="showOwe()">Click to Spend 💸👑</button>
         <div id="owe-message">
-            I OWE YOU 18,400 KSH! <br><br>
-            For every royal smile, every shared laugh, every moment you've made magical. Redeem anytime – your wish is my command forever. ❤️💰
+            I OWE YOU 17,876 KSH! <br><br>
+            For every smile that lights my world, every laugh we share, every moment you've made royal. Redeem anytime – your wish is my command. ❤️💰
         </div>
 
         <h2>A Poem Unrolled for You</h2>
@@ -198,22 +215,35 @@ My love for you conquers one and all.
 
         <h2>Messages Sealed with My Devotion</h2>
         <div class="message">Vyonne, you reign with unmatched grace and passion – my eternal queen.</div>
-        <div class="message">Every glance, every touch feels like a coronation of joy.</div>
-        <!-- Add your other messages here if desired -->
+        <div class="message">Every glance from you feels like a coronation of pure joy.</div>
 
         <footer>
-            Sealed with endless love, your devoted King,<br>
+            Sealed once, now opened with endless love,<br>
+            Your devoted King,<br>
             Joseph<br>
-            💍📜🥂❤️ – Our fairy tale continues.
+            💍📜🥂❤️ – Our story unrolls forever.
         </footer>
 
     </div>
 
+    <!-- Dancing Cupid appears after unroll -->
+    <img id="cupid" src="https://www.ohmygoodness.com/reserved/cards/og/202202051215420.dancing-cupid.gif.png" alt="Dancing Cupid Celebrating Us 💘">
+
     <script>
-        // Show dancing Cupid after a short delay
-        setTimeout(() => {
-            document.getElementById('cupid').classList.add('visible');
-        }, 2000);
+        const intro = document.getElementById('intro-scroll');
+        const unrollGif = document.getElementById('unroll-gif');
+        const content = document.getElementById('content');
+        const cupid = document.getElementById('cupid');
+
+        intro.addEventListener('click', () => {
+            intro.style.display = 'none';          // Hide closed scroll
+            unrollGif.style.display = 'block';     // Show unrolling GIF
+            setTimeout(() => {
+                unrollGif.style.display = 'none';  // Hide GIF after animation
+                content.classList.add('visible');  // Reveal full content
+                cupid.classList.add('visible');    // Cupid starts dancing
+            }, 3500); // Adjust timing to match GIF length (~3-4s)
+        });
 
         function playSong() {
             document.getElementById('song-player').style.display = 'block';
